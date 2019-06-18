@@ -1,25 +1,21 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import Boardtest from "./Containers/BoardPage"
+import Board from "./Containers/BoardPageTest"
+import Auth from "./Containers/AuthPage"
+import Nav from './Containers/Nav'
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Permission Test Frontend
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <Route path="/" component={Nav} />
+      <Switch>
+        <Route exact path="/" component={Board} />
+        <Route exact path="/test" component={Boardtest} />
+        <Route path="/auth" component={Auth} />
+      </Switch>
+    </Router>
   );
 }
 
