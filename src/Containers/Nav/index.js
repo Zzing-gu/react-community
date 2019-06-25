@@ -70,7 +70,7 @@ function ResponsiveDrawer(props) {
       <div className={classes.toolbar} />
       <Divider />
       <List>
-        {['로그인', '게시판'].map((text, index) => (
+        {['로그인', '게시판', '로그아웃'].map((text, index) => (
           
           <Link to={index % 2 === 0 ? "auth" : ""}>
           
