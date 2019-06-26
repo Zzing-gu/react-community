@@ -1,6 +1,9 @@
 import React from 'react';
 import { Editor, EditorState, RichUtils } from 'draft-js';
 import "./RichEditor.css"
+import Button from '@material-ui/core/Button';
+
+import {editRequest} from '../Modules/Auth'
 
 class RichEditorExample extends React.Component {
     constructor(props) {
@@ -42,6 +45,15 @@ class RichEditorExample extends React.Component {
             )
         );
     }
+
+    save = () => {
+        console.log('edit save')
+        console.log(this.state.editorState.getCurrentContent().getPlainText())
+        var content = {id : this.props.location.state.id, name:this.props.location.state.name, content:this.state.editorState.getCurrentContent().getPlainText()}
+        editRequest(content)
+
+    }
+
     render() {
         const { editorState } = this.state;
         // If the user changes block type before entering any text, we can
@@ -54,29 +66,35 @@ class RichEditorExample extends React.Component {
             }
         }
         return (
-            <div className="RichEditor-root">
-                <BlockStyleControls
-                    editorState={editorState}
-                    onToggle={this.toggleBlockType}
-                />
-                <InlineStyleControls
-                    editorState={editorState}
-                    onToggle={this.toggleInlineStyle}
-                />
-                <div className={className} onClick={this.focus}>
-                    <Editor
-                        blockStyleFn={getBlockStyle}
-                        customStyleMap={styleMap}
+            <React.Fragment>
+
+                <Button onClick={this.save} style={{float:"right"}} variant="contained" color="primary" >
+                    저장
+                </Button>
+                <div className="RichEditor-root">
+                    <BlockStyleControls
                         editorState={editorState}
-                        handleKeyCommand={this.handleKeyCommand}
-                        onChange={this.onChange}
-                        onTab={this.onTab}
-                        placeholder="Tell a story..."
-                        ref={(ref) => this.editor = ref}
-                        spellCheck={true}
+                        onToggle={this.toggleBlockType}
                     />
+                    <InlineStyleControls
+                        editorState={editorState}
+                        onToggle={this.toggleInlineStyle}
+                    />
+                    <div className={className} onClick={this.focus}>
+                        <Editor
+                            blockStyleFn={getBlockStyle}
+                            customStyleMap={styleMap}
+                            editorState={editorState}
+                            handleKeyCommand={this.handleKeyCommand}
+                            onChange={this.onChange}
+                            onTab={this.onTab}
+                            placeholder="Tell a story..."
+                            ref={(ref) => this.editor = ref}
+                            spellCheck={true}
+                        />
+                    </div>
                 </div>
-            </div>
+            </React.Fragment>
         );
     }
 }

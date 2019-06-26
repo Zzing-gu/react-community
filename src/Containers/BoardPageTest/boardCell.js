@@ -1,11 +1,12 @@
 import React, { Component } from 'react'
+import { Link } from 'react-router-dom'
 
 class BoardCell extends Component {
     render() {
         return (
             <tr>
-                <td className={"gall_num"}>1</td>
-                <td className={"gall_tit"}> <a href={"/detail"}>테스트테스트</a> </td>
+                <td className={"gall_num"}>{this.props.id}</td>
+                <td className={"gall_tit"}> <Link to={{pathname:"/detail", state:{id: this.props.id, name:this.props.name, content:this.props.content}}}>{this.props.name} </Link> </td>
                 <td className={"gall_writer"}>정호석</td>
                 <td className={"gall_date"}>19.06.18</td>
                 <td className={"gall_count"}>11</td>

@@ -45,8 +45,35 @@ export const login =  async (content) => {
     })
   }
 
-export const logoutWrapper = withRouter(({history}) => {
-  console.log('로그아웃...')
-    logout();
-    history.push("/")
-})
+
+  export const editRequest =  async (content) => {
+    await Axios.post('http://127.0.0.1:8000/edit/', content, config).then(
+     (response) => {
+       console.log(response)
+       console.log(response.data)
+      
+       window.location = "/";
+     }
+   ).catch((error) => {
+     console.log(error)
+   })
+ }
+
+
+ export const deleteRequest =  async (content) => {
+  await Axios.post('http://127.0.0.1:8000/delete/', content, config).then(
+   (response) => {
+     console.log(response)
+     console.log(response.data)
+     //document.cookie = 'token='+ (response.data.token).toString()
+
+     cookies.set('token', "", { path: '/' });
+     console.log(cookies.get('token')); // Pacman
+
+     //history.push("/")
+     window.location = "/";
+   }
+ ).catch((error) => {
+   console.log(error)
+ })
+}

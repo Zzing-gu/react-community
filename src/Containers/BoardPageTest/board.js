@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import BoardCell from './boardCell'
 
 class Board extends Component {
+
+
     render() {
         return (
             <table>
@@ -15,14 +17,11 @@ class Board extends Component {
                             <th scope="col">추천</th>
                         </tr>
                     </thead>
-                    <tbody>            
-                        <BoardCell/>
-                        <BoardCell/>
-                        <BoardCell/>
-                        <BoardCell/>
-                        {[0,1,2,3,4].map((item, index)=> {
+                    <tbody> 
+                        
+                        {this.props.listData.map((item, index)=> {
                             return (
-                                <BoardCell key={index}/>
+                                <BoardCell id={item[0]} name={item[1].name} content={item[1].content} key={index}/>
                             )
                         })}
                        
