@@ -1,5 +1,7 @@
 import React from 'react';
 
+import { logout } from '../../Modules/Auth'
+
 import AppBar from '@material-ui/core/AppBar';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Divider from '@material-ui/core/Divider';
@@ -16,14 +18,19 @@ import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
 import MenuIcon from '@material-ui/icons/Menu';
+import Button from '@material-ui/core/Button';
+import { Link } from 'react-router-dom'
 
-import {Link} from 'react-router-dom'
+import { cookies } from '../../cookie'
 
 const drawerWidth = 240;
 
 const useStyles = makeStyles(theme => ({
   root: {
     display: 'flex',
+  },
+  title: {
+    flexGrow: 1,
   },
   drawer: {
     [theme.breakpoints.up('sm')]: {
@@ -63,14 +70,14 @@ function ResponsiveDrawer(props) {
     setMobileOpen(!mobileOpen);
   }
 
- 
+
 
   const drawer = (
     <div>
-      <div className={classes.toolbar} />
+      <div className={classes.toolbar} >{cookies.get("token") ? "회원" : "비회원"}</div>
       <Divider />
       <List>
-        {['로그인', '게시판', '로그아웃'].map((text, index) => (
+        {/* {['로그인', '게시판', '로그아웃'].map((text, index) => (
           
           <Link to={index % 2 === 0 ? "auth" : ""}>
           
@@ -80,7 +87,14 @@ function ResponsiveDrawer(props) {
             </ListItem>
           </Link>
           
-        ))}
+        ))} */}
+        <Link to="">
+
+          <ListItem button >
+            <ListItemIcon><Forum /></ListItemIcon>
+            <ListItemText primary={"게시판"} />
+          </ListItem>
+        </Link>
       </List>
     </div>
   );
@@ -99,9 +113,17 @@ function ResponsiveDrawer(props) {
           >
             <MenuIcon />
           </IconButton>
-          <Typography variant="h6" noWrap>
+          <Typography className={classes.title} variant="h6" noWrap>
             커뮤니티
           </Typography>
+
+
+
+          {cookies.get("token")
+            ?
+            <Button onClick={logout} color="inherit">Logout</Button>
+            :
+            <Button color="inherit"><Link style={{ color: "white" }} to={"/auth"}>Login</Link></Button>}
         </Toolbar>
       </AppBar>
       <nav className={classes.drawer} aria-label="Mailbox folders">

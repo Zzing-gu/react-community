@@ -15,31 +15,7 @@ class Board extends Component {
                             <th scope="col">추천</th>
                         </tr>
                     </thead>
-                    <tbody>
-                        <tr>
-                            <td className={"gall_num"}>1</td>
-                            <td className={"gall_tit"}> <a href={"/detail"}>테스트테스트</a> </td>
-                            <td className={"gall_writer"}>정호석</td>
-                            <td className={"gall_date"}>19.06.18</td>
-                            <td className={"gall_count"}>11</td>
-                            <td className={"gall_recommend"}>1</td>
-                        </tr>
-                        <tr>
-                            <td className={"gall_num"}>1</td>
-                            <td className={"gall_tit"}> <a href={"/detail"}>테스트테스트</a> </td>
-                            <td className={"gall_writer"}>정호석</td>
-                            <td className={"gall_date"}>19.06.18</td>
-                            <td className={"gall_count"}>11</td>
-                            <td className={"gall_recommend"}>1</td>
-                        </tr>
-                        <tr>
-                            <td className={"gall_num"}>1</td>
-                            <td className={"gall_tit"}> <a href={"/detail"}>테스트테스트</a> </td>
-                            <td className={"gall_writer"}>정호석</td>
-                            <td className={"gall_date"}>19.06.18</td>
-                            <td className={"gall_count"}>11</td>
-                            <td className={"gall_recommend"}>1</td>
-                        </tr>
+                    <tbody>            
                         <BoardCell/>
                         <BoardCell/>
                         <BoardCell/>
