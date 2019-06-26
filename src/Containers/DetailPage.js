@@ -44,7 +44,7 @@ const DetailPage = (props) => {
                 삭제
             </Button>
             <Button  variant="contained" color="primary" className={classes.button}>
-                <Link style={{ color: "white" }}  to={{pathname:"/edit", state:{id: props.id, name:props.name, content:props.content}}}>
+                <Link style={{ color: "white" }}  to={{pathname:"/edit", state:{id: props.location.state.id, name:props.location.state.name, content:props.location.state.content}}}>
 
                     수정
                 </Link>

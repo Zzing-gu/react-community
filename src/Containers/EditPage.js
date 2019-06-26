@@ -49,6 +49,8 @@ class RichEditorExample extends React.Component {
     save = () => {
         console.log('edit save')
         console.log(this.state.editorState.getCurrentContent().getPlainText())
+        console.log(this.props.location.state.id)
+        console.log(this.props.location.state.name)
         var content = {id : this.props.location.state.id, name:this.props.location.state.name, content:this.state.editorState.getCurrentContent().getPlainText()}
         editRequest(content)
 
