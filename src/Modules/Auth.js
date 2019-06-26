@@ -60,15 +60,14 @@ export const login =  async (content) => {
  }
 
 
- export const deleteRequest =  async (content) => {
-  await Axios.post('http://127.0.0.1:8000/delete/', content, config).then(
+ export const deleteRequest =  async (id) => {
+  await Axios.post('http://127.0.0.1:8000/delete/', id, config).then(
    (response) => {
      console.log(response)
      console.log(response.data)
      //document.cookie = 'token='+ (response.data.token).toString()
 
-     cookies.set('token', "", { path: '/' });
-     console.log(cookies.get('token')); // Pacman
+    
 
      //history.push("/")
      window.location = "/";

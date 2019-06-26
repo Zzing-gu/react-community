@@ -7,6 +7,8 @@ import Button from '@material-ui/core/Button';
 import { Link } from 'react-router-dom'
 import './detail.css'
 
+import {deleteRequest} from '../Modules/Auth'
+
 const useStyles = makeStyles(theme => ({
     root: {
         //padding: theme.spacing(3, 2),
@@ -29,10 +31,16 @@ const DetailPage = (props) => {
 
     const classes = useStyles();
 
+    const deleteAction = () => {
+        var id = props.location.state.id
+        console.log(`delete ${id}`)
+        deleteRequest(id)
+    }
+
     return (
         <React.Fragment>
 
-            <Button variant="contained" color="secondary" className={classes.button}>
+            <Button onClick={deleteAction} variant="contained" color="secondary" className={classes.button}>
                 삭제
             </Button>
             <Button  variant="contained" color="primary" className={classes.button}>
