@@ -47,7 +47,7 @@ export const login =  async (content) => {
 
 
   export const editRequest =  async (content) => {
-    await Axios.post('http://127.0.0.1:8000/edit/', content, config).then(
+    await Axios.post('http://127.0.0.1:8000/api/edit/', content, config).then(
      (response) => {
        console.log(response)
        console.log(response.data)
@@ -61,7 +61,7 @@ export const login =  async (content) => {
 
 
  export const deleteRequest =  async (id) => {
-  await Axios.post('http://127.0.0.1:8000/delete/', id, config).then(
+  await Axios.post('http://127.0.0.1:8000/api/delete/', id, config).then(
    (response) => {
      console.log(response)
      console.log(response.data)
